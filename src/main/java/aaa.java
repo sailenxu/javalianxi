@@ -40,8 +40,24 @@ public class aaa {
             }
         }
     }
+    //4.冒泡排序，从大到小
+    public void maopao(){
+        int arr[] = {23,5,1,6,8,0};
+        for (int i=0; i<arr.length; i++){
+            for (int j=0; j<arr.length-1; j++){
+                if (arr[j]<arr[j+1]){
+                    int k=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=k;
+                }
+            }
+        }
+        for (int m:arr){
+            System.out.println(m);
+        }
+    }
     public static void main(String[] args) throws IOException {
         aaa a1 = new aaa();
-        a1.meth();
+        a1.maopao();
     }
 }
