@@ -27,7 +27,25 @@ public class aaa {
                 System.out.println(arr[j]);
             }
         }
-
+    }
+    //将字符串中的aeiou字符去掉
+    public void delChar(){
+        String a="I have a student";
+        String b = "aeiou";
+        char cc[] = a.toCharArray();
+        char dd[] = b.toCharArray();
+        String out="";
+        for (int j=0; j<cc.length; j++){
+            for (int i=0; i<dd.length; i++){
+                if (cc[j]==dd[i]){
+                    break;
+                }
+                if (i==dd.length-1){
+                    out=out+cc[j];
+                }
+            }
+        }
+        System.out.println(out);
     }
     //3.算法题：5元/只，3元/只，3只/元，100元买100只，算出所有方法结果
     public void meth(){
@@ -58,6 +76,6 @@ public class aaa {
     }
     public static void main(String[] args) throws IOException {
         aaa a1 = new aaa();
-        a1.maopao();
+        a1.delChar();
     }
 }
