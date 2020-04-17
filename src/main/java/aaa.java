@@ -74,8 +74,24 @@ public class aaa {
             System.out.println(m);
         }
     }
+    //一个字符串中单词最长的
+    public void FindLong(){
+        String aa = "I have a student";
+        StringTokenizer st = new StringTokenizer(aa);
+        int i=0;
+        int num=0;
+        String result="";
+        while(st.hasMoreTokens()){
+            result = st.nextToken();
+            if (result.length()>num){
+                num=result.length();
+            }
+            i++;
+        }
+        System.out.println(result);
+    }
     public static void main(String[] args) throws IOException {
         aaa a1 = new aaa();
-        a1.delChar();
+        a1.FindLong();
     }
 }
