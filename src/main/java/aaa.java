@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
@@ -90,8 +91,105 @@ public class aaa {
         }
         System.out.println(result);
     }
-    public static void main(String[] args) throws IOException {
+    //14.Int数组，相邻元素的差，求最大
+    public void IntCha(){
+        int aa[]={2,4,6,7,10,18,20};
+        int resu=0;
+        for (int i=0; i<aa.length-1; i++){
+            if (aa[i+1]-aa[i]>resu){
+                resu=aa[i+1]-aa[i];
+            }
+        }
+        System.out.println(resu);
+    }
+    /**
+     * 快速排序，递归
+     * @param array
+     * @param left
+     * @param right
+     */
+    public static void sort(int[] array, int left, int right) {
+        if(left > right) {
+            return;
+        }
+        //2,1,3
+        // base中存放基准数
+        int base = array[left];//2
+        int i = left, j = right;//0,2
+        while(i != j) {
+            // 顺序很重要，先从右边开始往左找，直到找到比base值小的数
+            while(array[j] >= base && i < j) {
+                j--;
+            }//j=1
+            // 再从左往右边找，直到找到比base值大的数
+            while(array[i] <= base && i < j) {
+                i++;
+            }//i=2
+            // 上面的循环结束表示找到了位置或者(i>=j)了，交换两个数在数组中的位置
+            if(i < j) {
+                int tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+            }
+        }
+        // 将基准数放到中间的位置（基准数归位）
+        array[left] = array[i];//3,1,2
+        array[i] = base;
+
+        // 递归，继续向基准的左右两边执行和上面同样的操作
+        // i的索引处为上面已确定好的基准值的位置，无需再处理
+        sort(array, left, i - 1);
+        sort(array, i + 1, right);
+    }
+    public void checkChar(){
+        String strSearch = "This is the string in which you have to search for a substring.";
+        String substring = "substring";
+        boolean found = false;
+        int max = strSearch.length() - substring.length();
+        testlbl:
+        for (int i = 0; i <= max; i++) {
+            int length = substring.length();
+            int j = i;
+            int k = 0;
+            while (length-- != 0) {
+                if(strSearch.charAt(j++) != substring.charAt(k++)){
+                    continue testlbl;
+                }
+            }
+            found = true;
+            break testlbl;
+        }
+        if (found) {
+            System.out.println("发现子字符串。");
+        }
+        else {
+            System.out.println("字符串中没有发现子字符串。");
+        }
+    }
+    //递归练习
+    public void listAllFile(File file){
+        File[] files = file.listFiles();
+        for (int i = 0; i<files.length; i++){
+            if (files[i].isDirectory()){
+                listAllFile(files[i]);
+                System.out.println("mulu:::"+files[i].getName());
+            }else{
+                System.out.println("wenjian:::"+files[i].getName());
+            }
+        }
+    }
+    //递归求n的阶乘
+    public long fact(int n) throws Exception {
+        if (n<0){
+            throw new Exception("ldsfals");
+        }else if (n==0||n==1){
+            return n;
+        }else {
+            return n*fact(n-1);
+        }
+    }
+    public static void main(String[] args) throws Exception {
         aaa a1 = new aaa();
-        a1.FindLong();
+        System.out.println(a1.fact(3));
     }
 }
