@@ -188,8 +188,36 @@ public class aaa {
             return n*fact(n-1);
         }
     }
+    //斐波那契数列，
+    public int fb(int n){
+        if (n<1){
+            return 0;
+        }else if (n==1){
+            return 1;
+        }else {
+            return fb(n-1)+fb(n-2);
+        }
+    }
+    public int fb2(int n){
+        int f0=0;
+        int f1=1;
+        int f2=0;
+        if (n==1){
+            return 1;
+        }else if (n<1){
+            return 0;
+        }else{
+            for (int i=2; i<=n; i++){
+                f2=f0+f1;
+                f0=f1;
+                f1=f2;
+            }
+            return f2;
+        }
+    }
     public static void main(String[] args) throws Exception {
         aaa a1 = new aaa();
-        System.out.println(a1.fact(3));
+        a1.fb2(3);
+//        System.out.println(a1.fb(3));
     }
 }
