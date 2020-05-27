@@ -248,8 +248,8 @@ public class aaa {
         String s2 = String.valueOf(n2) + String.valueOf(n1);//54
         //从左到右比较每一位
         for (int i = 0; i < s1.length(); i++) {
-            if (Integer.parseInt(s1.substring(i, i+1)) > Integer.parseInt(s2.substring(i, i+1))) return false;
-            if (Integer.parseInt(s1.substring(i, i+1)) < Integer.parseInt(s2.substring(i, i+1))) return true ;
+            if (Integer.parseInt(s1.substring(i, i+1)) > Integer.parseInt(s2.substring(i, i+1))) {return false;};
+            if (Integer.parseInt(s1.substring(i, i+1)) < Integer.parseInt(s2.substring(i, i+1))) {return true;} ;
         }
         return false;
     }
@@ -259,7 +259,28 @@ public class aaa {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-    //二分搜索
+
+    /**二分查找法：查找某个数是否在数组中
+     * 1.遍历进行比较查找，时间复杂度0(n)
+     * 2.建立哈希表，元素做key下标做value，时间复杂度0(1),但是空间复杂度0(n)
+     */
+    public void secondSearch(){
+        int search = 13;//查找的元素
+        int[] arr = {10,11,12,13,14,15,16,17,18,19,20};
+        int start = 0;
+        int end =arr.length-1;
+        int mid;
+        while (start<=end){
+            mid = start + (end-start)/2;
+            if(arr[mid]==search){
+                return;
+            }else if (arr[mid]<search){
+                start = mid+1;
+            }else {
+                end = mid-1;
+            }
+        }
+    }
     public static void main(String[] args) throws Exception {
         aaa a1 = new aaa();
         a1.sortArray();
