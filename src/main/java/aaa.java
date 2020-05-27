@@ -215,9 +215,54 @@ public class aaa {
             return f2;
         }
     }
+    /**
+     * int数组进行拼接，返回最大的拼接结果563302311912
+     * 思路：将每个元素每一位从左到右进行对比，然后排序
+     * 1.比较左边第一位：56,30,3,231,12,19
+     * 2.如果第一位相等的，再比较第二位：56,30,3,231,19,12，如何找出第一位相等的？
+     * 3.如果没有第二位的比较长度：56,3,30,231,19,12
+     * 231,12,56,19,30,3
+     * 上面思路太复杂，下面是更简单的思路，先对比两个数的组合是
+     */
+    public void sortArray(){
+        long ll = 0;
+        int[] arr = {231,30,3,12,232,19};
+        for (int i = 0; i < arr.length; i++) {
+            int max = i;
+            //此循环是找出最大的那个值
+            for (int j = i+1; j < arr.length; j++) {
+                if (cmp(arr[max], arr[j])) {
+                    max = j;
+                    System.out.println("i:"+i+",j:"+j+",max:"+max);
+                }
+            }
+            exch(arr, max, i);
+        }
+        for(int x:arr) {
+            System.out.println(x);
+        }
+    }
+    //将两个int前后拼接后比较大小
+    public boolean cmp(int n1, int n2){
+        String s1 = String.valueOf(n1) + String.valueOf(n2);//45
+        String s2 = String.valueOf(n2) + String.valueOf(n1);//54
+        //从左到右比较每一位
+        for (int i = 0; i < s1.length(); i++) {
+            if (Integer.parseInt(s1.substring(i, i+1)) > Integer.parseInt(s2.substring(i, i+1))) return false;
+            if (Integer.parseInt(s1.substring(i, i+1)) < Integer.parseInt(s2.substring(i, i+1))) return true ;
+        }
+        return false;
+    }
+    //将数组指定两个位置的值交换
+    private void exch(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    //二分搜索
     public static void main(String[] args) throws Exception {
         aaa a1 = new aaa();
-        a1.fb2(3);
+        a1.sortArray();
 //        System.out.println(a1.fb(3));
     }
 }
