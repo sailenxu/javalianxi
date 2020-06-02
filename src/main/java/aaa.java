@@ -2,21 +2,21 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class aaa {
-    //1.ä»é”®ç›˜è¾“å…¥ä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œå…¨éƒ¨è½¬ä¸ºå¤§å†™ï¼Œå¹¶è¾“å…¥åˆ°ä¸€ä¸ªtxtæ–‡æœ¬ä¸­
+    //1.´Ó¼üÅÌÊäÈëÒ»¸ö×Ö·û´®£¬È«²¿×ªÎª´óĞ´£¬²¢ÊäÈëµ½Ò»¸ötxtÎÄ±¾ÖĞ
     public void inputToUp() throws IOException {
         while (true) {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println(br.readLine().toUpperCase());
         }
     }
-    //2.ä¸¤ç¯‡è‹±æ–‡æ–‡ç« ï¼Œæ‰¾å‡ºåœ¨Aä¸­å­˜åœ¨Bä¸­ä¸å­˜åœ¨çš„å•è¯ï¼Œæ€ä¹ˆå»é‡
+    //2.Á½ÆªÓ¢ÎÄÎÄÕÂ£¬ÕÒ³öÔÚAÖĞ´æÔÚBÖĞ²»´æÔÚµÄµ¥´Ê£¬ÔõÃ´È¥ÖØ
     public void Finddefferent(){
         String a="China as the most important quality sign for the international Chinese outbound market.I am Chinese.";
         String b="I am come from China";
-        StringTokenizer tokenizer = new StringTokenizer(a, ",. ");//å°†aæ‹†å¼€ï¼Œæ”¾åˆ°å•è¯æ•°ç»„ä¸­
+        StringTokenizer tokenizer = new StringTokenizer(a, ",. ");//½«a²ğ¿ª£¬·Åµ½µ¥´ÊÊı×éÖĞ
         String[] arr = new String[tokenizer.countTokens()];
         int i=0;
         while (tokenizer.hasMoreTokens()){
@@ -29,7 +29,7 @@ public class aaa {
             }
         }
     }
-    //å°†å­—ç¬¦ä¸²ä¸­çš„aeiouå­—ç¬¦å»æ‰
+    //½«×Ö·û´®ÖĞµÄaeiou×Ö·ûÈ¥µô
     public void delChar(){
         String a="I have a student";
         String b = "aeiou";
@@ -48,7 +48,7 @@ public class aaa {
         }
         System.out.println(out);
     }
-    //3.ç®—æ³•é¢˜ï¼š5å…ƒ/åªï¼Œ3å…ƒ/åªï¼Œ3åª/å…ƒï¼Œ100å…ƒä¹°100åªï¼Œç®—å‡ºæ‰€æœ‰æ–¹æ³•ç»“æœ
+    //3.Ëã·¨Ìâ£º5Ôª/Ö»£¬3Ôª/Ö»£¬3Ö»/Ôª£¬100ÔªÂò100Ö»£¬Ëã³öËùÓĞ·½·¨½á¹û
     public void meth(){
         for (int x=0; x<=20; x++){
             for (int y=0; y<=33; y++){
@@ -59,7 +59,7 @@ public class aaa {
             }
         }
     }
-    //4.å†’æ³¡æ’åºï¼Œä»å¤§åˆ°å°
+    //4.Ã°ÅİÅÅĞò£¬´Ó´óµ½Ğ¡
     public void maopao(){
         int arr[] = {23,5,1,6,8,0};
         for (int i=0; i<arr.length; i++){
@@ -75,7 +75,7 @@ public class aaa {
             System.out.println(m);
         }
     }
-    //ä¸€ä¸ªå­—ç¬¦ä¸²ä¸­å•è¯æœ€é•¿çš„
+    //Ò»¸ö×Ö·û´®ÖĞµ¥´Ê×î³¤µÄ
     public void FindLong(){
         String aa = "I have a student";
         StringTokenizer st = new StringTokenizer(aa);
@@ -91,55 +91,61 @@ public class aaa {
         }
         System.out.println(result);
     }
-    //14.Intæ•°ç»„ï¼Œç›¸é‚»å…ƒç´ çš„å·®ï¼Œæ±‚æœ€å¤§
-    public void IntCha(){
-        int aa[]={2,4,6,7,10,18,20};
+    //16.IntÊı×é£¬ÏàÁÚÔªËØµÄ²î£¬Çó×î´ó
+    public void test16(){
+        int aa[]={2,10,6,7,30,18,20};
         int resu=0;
         for (int i=0; i<aa.length-1; i++){
-            if (aa[i+1]-aa[i]>resu){
-                resu=aa[i+1]-aa[i];
+            if (aa[i+1]>aa[i]){
+                if (aa[i+1]-aa[i]>resu){
+                    resu=aa[i+1]-aa[i];
+                }
+            }else if (aa[i+1]<aa[i]){
+                if (aa[i]-aa[i+1]>resu){
+                    resu = aa[i]-aa[i+1];
+                }
             }
         }
         System.out.println(resu);
     }
     /**
-     * å¿«é€Ÿæ’åºï¼Œé€’å½’
+     * ¿ìËÙÅÅĞò£¬µİ¹é
      * @param array
      * @param left
      * @param right
      */
-    public static void sort(int[] array, int left, int right) {
+    public static void test7(int[] array, int left, int right) {
         if(left > right) {
             return;
         }
         //2,1,3
-        // baseä¸­å­˜æ”¾åŸºå‡†æ•°
+        // baseÖĞ´æ·Å»ù×¼Êı
         int base = array[left];//2
         int i = left, j = right;//0,2
         while(i != j) {
-            // é¡ºåºå¾ˆé‡è¦ï¼Œå…ˆä»å³è¾¹å¼€å§‹å¾€å·¦æ‰¾ï¼Œç›´åˆ°æ‰¾åˆ°æ¯”baseå€¼å°çš„æ•°
+            // Ë³ĞòºÜÖØÒª£¬ÏÈ´ÓÓÒ±ß¿ªÊ¼Íù×óÕÒ£¬Ö±µ½ÕÒµ½±ÈbaseÖµĞ¡µÄÊı
             while(array[j] >= base && i < j) {
                 j--;
             }//j=1
-            // å†ä»å·¦å¾€å³è¾¹æ‰¾ï¼Œç›´åˆ°æ‰¾åˆ°æ¯”baseå€¼å¤§çš„æ•°
+            // ÔÙ´Ó×óÍùÓÒ±ßÕÒ£¬Ö±µ½ÕÒµ½±ÈbaseÖµ´óµÄÊı
             while(array[i] <= base && i < j) {
                 i++;
             }//i=2
-            // ä¸Šé¢çš„å¾ªç¯ç»“æŸè¡¨ç¤ºæ‰¾åˆ°äº†ä½ç½®æˆ–è€…(i>=j)äº†ï¼Œäº¤æ¢ä¸¤ä¸ªæ•°åœ¨æ•°ç»„ä¸­çš„ä½ç½®
+            // ÉÏÃæµÄÑ­»·½áÊø±íÊ¾ÕÒµ½ÁËÎ»ÖÃ»òÕß(i>=j)ÁË£¬½»»»Á½¸öÊıÔÚÊı×éÖĞµÄÎ»ÖÃ
             if(i < j) {
                 int tmp = array[i];
                 array[i] = array[j];
                 array[j] = tmp;
             }
         }
-        // å°†åŸºå‡†æ•°æ”¾åˆ°ä¸­é—´çš„ä½ç½®ï¼ˆåŸºå‡†æ•°å½’ä½ï¼‰
+        // ½«»ù×¼Êı·Åµ½ÖĞ¼äµÄÎ»ÖÃ£¨»ù×¼Êı¹éÎ»£©
         array[left] = array[i];//3,1,2
         array[i] = base;
 
-        // é€’å½’ï¼Œç»§ç»­å‘åŸºå‡†çš„å·¦å³ä¸¤è¾¹æ‰§è¡Œå’Œä¸Šé¢åŒæ ·çš„æ“ä½œ
-        // içš„ç´¢å¼•å¤„ä¸ºä¸Šé¢å·²ç¡®å®šå¥½çš„åŸºå‡†å€¼çš„ä½ç½®ï¼Œæ— éœ€å†å¤„ç†
-        sort(array, left, i - 1);
-        sort(array, i + 1, right);
+        // µİ¹é£¬¼ÌĞøÏò»ù×¼µÄ×óÓÒÁ½±ßÖ´ĞĞºÍÉÏÃæÍ¬ÑùµÄ²Ù×÷
+        // iµÄË÷Òı´¦ÎªÉÏÃæÒÑÈ·¶¨ºÃµÄ»ù×¼ÖµµÄÎ»ÖÃ£¬ÎŞĞèÔÙ´¦Àí
+        test7(array, left, i - 1);
+        test7(array, i + 1, right);
     }
     public void checkChar(){
         String strSearch = "This is the string in which you have to search for a substring.";
@@ -160,13 +166,13 @@ public class aaa {
             break testlbl;
         }
         if (found) {
-            System.out.println("å‘ç°å­å­—ç¬¦ä¸²ã€‚");
+            System.out.println("·¢ÏÖ×Ó×Ö·û´®¡£");
         }
         else {
-            System.out.println("å­—ç¬¦ä¸²ä¸­æ²¡æœ‰å‘ç°å­å­—ç¬¦ä¸²ã€‚");
+            System.out.println("×Ö·û´®ÖĞÃ»ÓĞ·¢ÏÖ×Ó×Ö·û´®¡£");
         }
     }
-    //é€’å½’ç»ƒä¹ 
+    //µİ¹éÁ·Ï°
     public void listAllFile(File file){
         File[] files = file.listFiles();
         for (int i = 0; i<files.length; i++){
@@ -178,7 +184,7 @@ public class aaa {
             }
         }
     }
-    //é€’å½’æ±‚nçš„é˜¶ä¹˜
+    //µİ¹éÇónµÄ½×³Ë
     public long fact(int n) throws Exception {
         if (n<0){
             throw new Exception("ldsfals");
@@ -188,7 +194,7 @@ public class aaa {
             return n*fact(n-1);
         }
     }
-    //æ–æ³¢é‚£å¥‘æ•°åˆ—ï¼Œ
+    //ì³²¨ÄÇÆõÊıÁĞ£¬
     public int fb(int n){
         if (n<1){
             return 0;
@@ -216,20 +222,20 @@ public class aaa {
         }
     }
     /**
-     * intæ•°ç»„è¿›è¡Œæ‹¼æ¥ï¼Œè¿”å›æœ€å¤§çš„æ‹¼æ¥ç»“æœ563302311912
-     * æ€è·¯ï¼šå°†æ¯ä¸ªå…ƒç´ æ¯ä¸€ä½ä»å·¦åˆ°å³è¿›è¡Œå¯¹æ¯”ï¼Œç„¶åæ’åº
-     * 1.æ¯”è¾ƒå·¦è¾¹ç¬¬ä¸€ä½ï¼š56,30,3,231,12,19
-     * 2.å¦‚æœç¬¬ä¸€ä½ç›¸ç­‰çš„ï¼Œå†æ¯”è¾ƒç¬¬äºŒä½ï¼š56,30,3,231,19,12ï¼Œå¦‚ä½•æ‰¾å‡ºç¬¬ä¸€ä½ç›¸ç­‰çš„ï¼Ÿ
-     * 3.å¦‚æœæ²¡æœ‰ç¬¬äºŒä½çš„æ¯”è¾ƒé•¿åº¦ï¼š56,3,30,231,19,12
+     * intÊı×é½øĞĞÆ´½Ó£¬·µ»Ø×î´óµÄÆ´½Ó½á¹û563302311912
+     * Ë¼Â·£º½«Ã¿¸öÔªËØÃ¿Ò»Î»´Ó×óµ½ÓÒ½øĞĞ¶Ô±È£¬È»ºóÅÅĞò
+     * 1.±È½Ï×ó±ßµÚÒ»Î»£º56,30,3,231,12,19
+     * 2.Èç¹ûµÚÒ»Î»ÏàµÈµÄ£¬ÔÙ±È½ÏµÚ¶şÎ»£º56,30,3,231,19,12£¬ÈçºÎÕÒ³öµÚÒ»Î»ÏàµÈµÄ£¿
+     * 3.Èç¹ûÃ»ÓĞµÚ¶şÎ»µÄ±È½Ï³¤¶È£º56,3,30,231,19,12
      * 231,12,56,19,30,3
-     * ä¸Šé¢æ€è·¯å¤ªå¤æ‚ï¼Œä¸‹é¢æ˜¯æ›´ç®€å•çš„æ€è·¯ï¼Œå…ˆå¯¹æ¯”ä¸¤ä¸ªæ•°çš„ç»„åˆæ˜¯
+     * ÉÏÃæË¼Â·Ì«¸´ÔÓ£¬ÏÂÃæÊÇ¸ü¼òµ¥µÄË¼Â·£¬ÏÈ¶Ô±ÈÁ½¸öÊıµÄ×éºÏÊÇ
      */
-    public void sortArray(){
+    public void test17(){
         long ll = 0;
         int[] arr = {231,30,3,12,232,19};
         for (int i = 0; i < arr.length; i++) {
             int max = i;
-            //æ­¤å¾ªç¯æ˜¯æ‰¾å‡ºæœ€å¤§çš„é‚£ä¸ªå€¼
+            //´ËÑ­»·ÊÇÕÒ³ö×î´óµÄÄÇ¸öÖµ
             for (int j = i+1; j < arr.length; j++) {
                 if (cmp(arr[max], arr[j])) {
                     max = j;
@@ -242,30 +248,30 @@ public class aaa {
             System.out.println(x);
         }
     }
-    //å°†ä¸¤ä¸ªintå‰åæ‹¼æ¥åæ¯”è¾ƒå¤§å°
+    //½«Á½¸öintÇ°ºóÆ´½Óºó±È½Ï´óĞ¡
     public boolean cmp(int n1, int n2){
         String s1 = String.valueOf(n1) + String.valueOf(n2);//45
         String s2 = String.valueOf(n2) + String.valueOf(n1);//54
-        //ä»å·¦åˆ°å³æ¯”è¾ƒæ¯ä¸€ä½
+        //´Ó×óµ½ÓÒ±È½ÏÃ¿Ò»Î»
         for (int i = 0; i < s1.length(); i++) {
             if (Integer.parseInt(s1.substring(i, i+1)) > Integer.parseInt(s2.substring(i, i+1))) {return false;};
             if (Integer.parseInt(s1.substring(i, i+1)) < Integer.parseInt(s2.substring(i, i+1))) {return true;} ;
         }
         return false;
     }
-    //å°†æ•°ç»„æŒ‡å®šä¸¤ä¸ªä½ç½®çš„å€¼äº¤æ¢
+    //½«Êı×éÖ¸¶¨Á½¸öÎ»ÖÃµÄÖµ½»»»
     private void exch(int[] nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
-
-    /**äºŒåˆ†æŸ¥æ‰¾æ³•ï¼šæŸ¥æ‰¾æŸä¸ªæ•°æ˜¯å¦åœ¨æ•°ç»„ä¸­
-     * 1.éå†è¿›è¡Œæ¯”è¾ƒæŸ¥æ‰¾ï¼Œæ—¶é—´å¤æ‚åº¦0(n)
-     * 2.å»ºç«‹å“ˆå¸Œè¡¨ï¼Œå…ƒç´ åškeyä¸‹æ ‡åšvalueï¼Œæ—¶é—´å¤æ‚åº¦0(1),ä½†æ˜¯ç©ºé—´å¤æ‚åº¦0(n)
+    /**¶ş·Ö²éÕÒ·¨£º²éÕÒÄ³¸öÊıÊÇ·ñÔÚÊı×éÖĞ
+     * 1.±éÀú½øĞĞ±È½Ï²éÕÒ£¬Ê±¼ä¸´ÔÓ¶È0(n)
+     * 2.½¨Á¢¹şÏ£±í£¬ÔªËØ×ökeyÏÂ±ê×övalue£¬Ê±¼ä¸´ÔÓ¶È0(1),µ«ÊÇ¿Õ¼ä¸´ÔÓ¶È0(n)
+     * 3.Ê¹ÓÃ¶ş·Ö²éÕÒ·¨
      */
-    public void secondSearch(){
-        int search = 13;//æŸ¥æ‰¾çš„å…ƒç´ 
+    public void test18(){
+        int search = 13;//²éÕÒµÄÔªËØ
         int[] arr = {10,11,12,13,14,15,16,17,18,19,20};
         int start = 0;
         int end =arr.length-1;
@@ -281,9 +287,66 @@ public class aaa {
             }
         }
     }
+    //¶Ô±ÈÁ½¸ö°æ±¾ºÅ´óĞ¡
+    public void test19(){
+        String v1 = "5.15.4.1802";
+        String v2 = "6.15.1.1010";
+        for (int i=0;i<v1.split("\\.").length;i++){
+            System.out.println(i);
+            if (Integer.parseInt(v1.split("\\.")[i])>Integer.parseInt(v2.split("\\.")[i])){
+                System.out.println("v1");
+                break;
+            }else if (Integer.parseInt(v1.split("\\.")[i])==Integer.parseInt(v2.split("\\.")[i])){
+                System.out.println("==");
+            }else{
+                System.out.println("v2");
+                break;
+            }
+        }
+    }
+    //Êı×éÖĞÊı×Ö³öÏÖ´ÎÊı³¬¹ıÊı×é³¤¶ÈµÄÒ»°ë
+    //²¢Ã»ÓĞÊ¹ÓÃÍ³¼ÆÄ³¸öÊı³öÏÖµÄ×Ü´ÎÊı
+    public void test22(){
+        int[] arr = {10,11,11,13,11,11,11,17,15,19};
+        int result = arr[0];
+        int count = 1;
+        for (int i = 1;i<arr.length;i++){
+            if (count==0){
+                result = arr[i];
+                count = 1;
+            }else if (result == arr[i]){
+                count++;
+            }else{
+                count--;
+            }
+            System.out.println(arr[i]+"::"+count+"::"+result);
+        }
+        System.out.println(count+":::::"+result);
+    }
+    //ÕÒ³öÊı×éÖĞ³öÏÖ´ÎÊı×î¶àµÄ
+    public void test23(){
+        int[] arr = {10,11,11,13,11,11,11,17,15,19};
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i=0;i<arr.length;i++){
+            if (map.containsKey(arr[i])){
+                map.put(arr[i], map.get(arr[i])+1);
+            }else{
+                map.put(arr[i], 1);
+            }
+        }
+        Collection<Integer> count = map.values();
+        int maxCount = Collections.max(count);//»ñÈ¡valuesÖĞµÄ×î´óÖµ
+        //±éÀúmap£¬ÄÃµ½×î´óvalue¶ÔÓ¦µÄkey
+        for (Map.Entry<Integer, Integer> entry:map.entrySet()){
+            if (entry.getValue() == maxCount){
+                System.out.println("´ÎÊı×î¶à£º"+entry.getKey());
+            }
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         aaa a1 = new aaa();
-        a1.sortArray();
+        a1.test23();
 //        System.out.println(a1.fb(3));
     }
 }
