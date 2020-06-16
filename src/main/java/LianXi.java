@@ -1,10 +1,12 @@
+package main.java;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class aaa {
+public class LianXi {
     //1.从键盘输入一个字符串，全部转为大写，并输入到一个txt文本中
     public void inputToUp() throws IOException {
         while (true) {
@@ -29,7 +31,7 @@ public class aaa {
             }
         }
     }
-    //将字符串中的aeiou字符去掉
+    //3.将字符串中的aeiou字符去掉
     public void delChar(){
         String a="I have a student";
         String b = "aeiou";
@@ -48,7 +50,7 @@ public class aaa {
         }
         System.out.println(out);
     }
-    //3.算法题：5元/只，3元/只，3只/元，100元买100只，算出所有方法结果
+    //4.算法题：5元/只，3元/只，3只/元，100元买100只，算出所有方法结果
     public void meth(){
         for (int x=0; x<=20; x++){
             for (int y=0; y<=33; y++){
@@ -59,7 +61,7 @@ public class aaa {
             }
         }
     }
-    //4.冒泡排序，从大到小
+    //5.冒泡排序，从大到小
     public void maopao(){
         int arr[] = {23,5,1,6,8,0};
         for (int i=0; i<arr.length; i++){
@@ -73,6 +75,47 @@ public class aaa {
         }
         for (int m:arr){
             System.out.println(m);
+        }
+    }
+    //6.快速排序
+    public void quickSort(int b[], int left, int right){
+        
+    }
+    public static void main(String[] args) {
+        LianXi lianXi = new LianXi();
+        int aa[]={5,4,7,2,9,1,77};
+        lianXi.quickSort(aa,0,6);
+        for (int a:aa){
+            System.out.println(a);
+        }
+    }
+    //7.堆排序
+    //8.归并排序
+    //9.斐波那契数列，n是前两个数的和，求n
+    public int fb(int n){
+        if (n<1){
+            return 0;
+        }else if (n==1){
+            return 1;
+        }else {
+            return fb(n-1)+fb(n-2);
+        }
+    }
+    public int fb2(int n){
+        int f0=0;
+        int f1=1;
+        int f2=0;
+        if (n==1){
+            return 1;
+        }else if (n<1){
+            return 0;
+        }else{
+            for (int i=2; i<=n; i++){
+                f2=f0+f1;
+                f0=f1;
+                f1=f2;
+            }
+            return f2;
         }
     }
     //一个字符串中单词最长的
@@ -194,33 +237,7 @@ public class aaa {
             return n*fact(n-1);
         }
     }
-    //斐波那契数列，
-    public int fb(int n){
-        if (n<1){
-            return 0;
-        }else if (n==1){
-            return 1;
-        }else {
-            return fb(n-1)+fb(n-2);
-        }
-    }
-    public int fb2(int n){
-        int f0=0;
-        int f1=1;
-        int f2=0;
-        if (n==1){
-            return 1;
-        }else if (n<1){
-            return 0;
-        }else{
-            for (int i=2; i<=n; i++){
-                f2=f0+f1;
-                f0=f1;
-                f1=f2;
-            }
-            return f2;
-        }
-    }
+
     /**
      * int数组进行拼接，返回最大的拼接结果563302311912
      * 思路：将每个元素每一位从左到右进行对比，然后排序
@@ -344,9 +361,30 @@ public class aaa {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        aaa a1 = new aaa();
-        a1.test23();
-//        System.out.println(a1.fb(3));
-    }
+//    public static void main(String[] args) throws Exception {
+//        aaa a1 = new aaa();
+////        a1.test23();
+////        System.out.println(a1.fb(3));
+//        HashMap<String, Integer> map = new HashMap<String, Integer>();
+//        map.put("aa", 1);
+//        map.put("bb", 2);
+//        Hashtable<String, Integer> table = new Hashtable<String, Integer>();
+//        table.put("cc", 3);
+//        table.put("dd", 4);
+//        if (map.containsKey("aa")){
+//            System.out.println(map.get("aa"));
+//        }
+//        if (table.contains("3")){
+//            System.out.println("cc");
+//        }
+//        System.out.println(Collections.max(map.values()));
+//        map.remove("aa");
+//        //查找map中某个value对应的key，遍历map
+//        for (Map.Entry<String, Integer> entry:map.entrySet()){
+//            if (entry.getValue()==1){
+//                System.out.println(entry.getKey());
+//            }
+//        }
+//
+//    }
 }
