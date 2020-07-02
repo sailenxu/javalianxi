@@ -94,9 +94,10 @@ public class LianXi {
         //当left=right，这个坑没东西了，放入tmp，这样数组顺序分成了两边，左边比tmp小，右边比tmp大，tmp作为基准点，两边的数组再次递归排序
         arr[left] = tmp;
         System.out.println(Arrays.toString(arr));
-        return tmp;
+        return left;
     }
     public void kuaipai(int arr[], int left, int right) {
+        if (left >= right) return;
         int pivot = getPivot(arr, left, right);
         kuaipai(arr, left, pivot-1);
         kuaipai(arr, pivot+1, right);
@@ -104,7 +105,7 @@ public class LianXi {
 
     public static void main(String[] args) {
         LianXi lianXi = new LianXi();
-        lianXi.getPivot(new int[]{6,2,7,3,8}, 0, 4);
+        lianXi.kuaipai(new int[]{6,2,7,3,8}, 0, 4);
     }
 //    public static void main(String[] args) {
 //        LianXi lianXi = new LianXi();
