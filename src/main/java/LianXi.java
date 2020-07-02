@@ -78,19 +78,80 @@ public class LianXi {
         }
     }
     //6.快速排序
-    public void quickSort(int b[], int left, int right){
-        
+    public int getPivot(int arr[], int left, int right) {
+        int tmp = arr[left];//设定最左侧的为tmp,从最右侧开始找比tmp小的
+        while (left < right) {
+            while (left < right && arr[right] >= tmp) {
+                right--;
+            }
+            arr[left] = arr[right];//找到比tmp小的，空出坑来，把值挪到left
+            //然后从左侧找比tmp大的
+            while (left < right && arr[left] <= tmp) {
+                left++;
+            }
+            arr[right] = arr[left];//找到比tmp大的，空出坑来，把值给上面的right坑
+        }
+        //当left=right，这个坑没东西了，放入tmp，这样数组顺序分成了两边，左边比tmp小，右边比tmp大，tmp作为基准点，两边的数组再次递归排序
+        arr[left] = tmp;
+        System.out.println(Arrays.toString(arr));
+        return tmp;
     }
+    public void kuaipai(int arr[], int left, int right) {
+        int pivot = getPivot(arr, left, right);
+        kuaipai(arr, left, pivot-1);
+        kuaipai(arr, pivot+1, right);
+    }
+
     public static void main(String[] args) {
         LianXi lianXi = new LianXi();
-        int aa[]={5,4,7,2,9,1,77};
-        lianXi.quickSort(aa,0,6);
-        for (int a:aa){
-            System.out.println(a);
-        }
+        lianXi.getPivot(new int[]{6,2,7,3,8}, 0, 4);
     }
+//    public static void main(String[] args) {
+//        LianXi lianXi = new LianXi();
+//        int aa[]={5,4,7,2,9};
+//        lianXi.quickSort(aa,0,4);
+//        for (int a:aa){
+//            System.out.print(a+":");
+//        }
+//    }
     //7.堆排序
     //8.归并排序
+    public void guibing(int arr[], int left, int right){
+        //拆分
+        if (left>=right) return;
+        int mid = left+(right-left)/2;
+        guibing(arr, left, mid);
+        guibing(arr, mid+1, right);
+        merge(arr, left, mid, right);
+    }
+    //比较大小后合并
+    private void merge(int[] arr, int left, int mid, int right) {
+        System.out.println("lef:" +left+":mid:"+mid+":right:"+right);
+        int s1 = left;//第一个的开始
+        int s2 = mid+1;//第二个数组归并的开始
+        int temp[] = new int[right-left+1];//创建一个新数组，来存储排序后的值
+        int i = 0;//数组索引index
+        //依次对比两个归并中的值
+        while (s1 <= mid && s2 <= right) {
+            if (arr[s1] <= arr[s2]){
+                temp[i] = arr[s1]; i++; s1++;
+            }else {
+                temp[i] = arr[s2]; i++; s2++;
+            }
+        }
+        //while执行完，还会剩下s1或s2没放入temp，需要单独的将剩下的放入temp
+        while (s1 <= mid) {
+            temp[i] = arr[s1]; i++; s1++;
+        }
+        while (s2 <= right) {
+            temp[i] = arr[s2]; i++; s2++;
+        }
+        //temp已经是合并后的数组了，要将temp放入arr
+        for (int j = 0;j<temp.length;j++) {
+            arr[j+left] = temp[j];
+        }
+        System.out.println(Arrays.toString(arr));
+    }
     //9.斐波那契数列，n是前两个数的和，求n
     public int fb(int n){
         if (n<1){
@@ -134,6 +195,24 @@ public class LianXi {
         }
         System.out.println(result);
     }
+    //12.将一个int进行逆序123》321
+    public void test12(int x){
+        int res=0;
+        while (x!=0){
+            res = res*10+x%10;
+            x = x/10;
+        }
+    }
+    public void climbStairs(int n) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        System.out.println(dp[n]);
+    }
+
     //16.Int数组，相邻元素的差，求最大
     public void test16(){
         int aa[]={2,10,6,7,30,18,20};
