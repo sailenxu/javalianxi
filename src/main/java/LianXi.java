@@ -50,6 +50,32 @@ public class LianXi {
         }
         System.out.println(out);
     }
+    //1.6判断字符串是否是ipv4地址
+    public boolean isIpv4(String str) {
+        System.out.println(str);
+        if (str.length()==0 && str == null) return false;
+        String split[] = str.split("\\.");
+        //按照.分开，因为ipv4可以分成4个,java需要加转移字符！！！
+        System.out.println(Arrays.toString(split));
+        if (split.length == 4) {
+            //第一个在1-255之间，不能为0，剩下每组都在0-255之间才对
+            if (Integer.valueOf(split[0]) > 0 && Integer.valueOf(split[0]) <= 255) {
+                for (String s:split) {
+                    if (Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 255) {
+                    }else{
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        LianXi lianXi = new LianXi();
+        System.out.println(lianXi.isIpv4("1.0.0.0"));
+    }
     //4.算法题：5元/只，3元/只，3只/元，100元买100只，算出所有方法结果
     public void meth(){
         for (int x=0; x<=20; x++){
@@ -103,10 +129,10 @@ public class LianXi {
         kuaipai(arr, pivot+1, right);
     }
 
-    public static void main(String[] args) {
-        LianXi lianXi = new LianXi();
-        lianXi.kuaipai(new int[]{6,2,7,3,8}, 0, 4);
-    }
+//    public static void main(String[] args) {
+//        LianXi lianXi = new LianXi();
+//        lianXi.kuaipai(new int[]{6,2,7,3,8}, 0, 4);
+//    }
 //    public static void main(String[] args) {
 //        LianXi lianXi = new LianXi();
 //        int aa[]={5,4,7,2,9};
@@ -115,7 +141,7 @@ public class LianXi {
 //            System.out.print(a+":");
 //        }
 //    }
-    //7.堆排序
+    //7.堆排序shendu
     //8.归并排序
     public void guibing(int arr[], int left, int right){
         //拆分
@@ -231,45 +257,7 @@ public class LianXi {
         }
         System.out.println(resu);
     }
-    /**
-     * 快速排序，递归
-     * @param array
-     * @param left
-     * @param right
-     */
-    public static void test7(int[] array, int left, int right) {
-        if(left > right) {
-            return;
-        }
-        //2,1,3
-        // base中存放基准数
-        int base = array[left];//2
-        int i = left, j = right;//0,2
-        while(i != j) {
-            // 顺序很重要，先从右边开始往左找，直到找到比base值小的数
-            while(array[j] >= base && i < j) {
-                j--;
-            }//j=1
-            // 再从左往右边找，直到找到比base值大的数
-            while(array[i] <= base && i < j) {
-                i++;
-            }//i=2
-            // 上面的循环结束表示找到了位置或者(i>=j)了，交换两个数在数组中的位置
-            if(i < j) {
-                int tmp = array[i];
-                array[i] = array[j];
-                array[j] = tmp;
-            }
-        }
-        // 将基准数放到中间的位置（基准数归位）
-        array[left] = array[i];//3,1,2
-        array[i] = base;
 
-        // 递归，继续向基准的左右两边执行和上面同样的操作
-        // i的索引处为上面已确定好的基准值的位置，无需再处理
-        test7(array, left, i - 1);
-        test7(array, i + 1, right);
-    }
     public void checkChar(){
         String strSearch = "This is the string in which you have to search for a substring.";
         String substring = "substring";
@@ -362,7 +350,7 @@ public class LianXi {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-    /**二分查找法：查找某个数是否在数组中
+    /**二分查找法：查找某个数是否在数组中，前提数组是有序的
      * 1.遍历进行比较查找，时间复杂度0(n)
      * 2.建立哈希表，元素做key下标做value，时间复杂度0(1),但是空间复杂度0(n)
      * 3.使用二分查找法
@@ -440,6 +428,43 @@ public class LianXi {
             }
         }
     }
+    public void leetcode20(String s){
+        Stack<Character> stack = new Stack<Character>();
+        for (int i=0;i<s.length();i++) {
+            char s1 = s.charAt(i);
+            if (s1 == '(' || s1 == '{' || s1 == '[') {
+                stack.push(s1);
+            } else {
+                if (stack.isEmpty()) {
+                    System.out.println("右括号多");
+                    return;
+                }
+                if ((s1 == '}' && stack.peek() == '{') || (s1 == ']' && stack.peek() == '[') || (s1 == ')' && stack.peek() == '(')) {
+                    stack.pop();
+                } else {
+                    System.out.println("bupipei");
+                    return;
+                }
+            }
+        }
+        if (!stack.isEmpty()) {
+            System.out.println("zuoduo");
+            return;
+        }
+    }
+    public void coversion(int number) {
+        int result = number/25;
+        int remain = number%25;
+        if (result == 0) {
+            coversion(result);
+            if (remain < 10) {
+                System.out.println(remain);
+            }else {
+                System.out.println(remain+55);
+            }
+        }
+    }
+
 
 //    public static void main(String[] args) throws Exception {
 //        aaa a1 = new aaa();
