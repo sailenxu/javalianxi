@@ -72,10 +72,6 @@ public class LianXi {
         return false;
     }
 
-    public static void main(String[] args) {
-        LianXi lianXi = new LianXi();
-        System.out.println(lianXi.isIpv4("1.0.0.0"));
-    }
     //4.算法题：5元/只，3元/只，3只/元，100元买100只，算出所有方法结果
     public void meth(){
         for (int x=0; x<=20; x++){
@@ -129,19 +125,50 @@ public class LianXi {
         kuaipai(arr, pivot+1, right);
     }
 
-//    public static void main(String[] args) {
-//        LianXi lianXi = new LianXi();
-//        lianXi.kuaipai(new int[]{6,2,7,3,8}, 0, 4);
-//    }
-//    public static void main(String[] args) {
-//        LianXi lianXi = new LianXi();
-//        int aa[]={5,4,7,2,9};
-//        lianXi.quickSort(aa,0,4);
-//        for (int a:aa){
-//            System.out.print(a+":");
-//        }
-//    }
-    //7.堆排序shendu
+    //4.4.堆排序
+    public void duipai(int arr[]) {
+        for (int i=0;i<arr.length;i++) {
+            //建堆并对比，结果是一个顶堆，最大数在上，然后调换首尾
+            createDui(arr, arr.length-i);
+            changeStartandEnd(arr, 0, arr.length-1-i);
+            System.out.println(Arrays.toString(arr));
+        }
+    }
+    public void createDui(int arr[], int length) {
+        //创建堆并对比，最大的置顶
+        //length/2-1这是最左侧的最底部非叶子节点,依次减1，都是非叶子节点
+        for (int jiedian=length/2-1;jiedian>=0;jiedian--) {
+            //循环所有的非叶子节点
+            int tmp = arr[jiedian];
+            int zi = jiedian*2+1;//左子节点
+            if (zi<length) {
+                if ((zi + 1 < length) && arr[zi] < arr[zi + 1]) {
+                    zi++;//比较两个叶子，用大的来和jiedian比较
+                }
+                if (arr[zi] > tmp) {
+                    //当最大的子节点比tmp大时，进行交换，同时判断子节点是不是非叶子节点，如果是的话要把后面的都重新判断一遍
+                    arr[jiedian] = arr[zi];
+                    arr[zi] = tmp;
+                    //如果是非叶子节点，从子节点再重新判断一遍
+                    if (zi<=(length/2-1)) {
+                        jiedian = zi+1;
+                        continue;
+                    }
+                }
+            }
+        }
+
+    }
+    public void changeStartandEnd(int arr[], int a, int b) {
+        int tmp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = tmp;
+    }
+
+    public static void main(String[] args) {
+        LianXi lianXi = new LianXi();
+        lianXi.duipai(new int[]{1,2,3,6,5,4,9,7,8});
+    }
     //8.归并排序
     public void guibing(int arr[], int left, int right){
         //拆分
